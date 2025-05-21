@@ -1,73 +1,105 @@
-# Welcome to your Lovable project
 
-## Project info
 
-**URL**: https://lovable.dev/projects/89a10000-e28c-4ccf-afac-1c64bf759175
+# Image Forgery Detection Application
 
-## How can I edit this code?
+This application uses a Graph Neural Network (GNN) to detect and visualize forgery in images.
 
-There are several ways of editing your application.
+<pre> project-root/
+├── public/                     # Static frontend files (images, icons, etc.)
 
-**Use Lovable**
+├── src/                        # Application source code
+│   ├── components/             # Reusable React components (e.g., Navbar, Card)
+│   ├── pages/                  # React pages (e.g., Home.jsx, Upload.jsx)
+│   ├── server/                 # Backend (Node.js + Python)
+│   │   ├── analyze_image.py    # Python script for image analysis
+│   │   ├── server.js           # Express server entry point
+│   │   └── package.json        # Backend dependencies
+│   └── uploads/                # Temp folder for uploaded images
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/89a10000-e28c-4ccf-afac-1c64bf759175) and start prompting.
+├── gnn_model.pth               # Trained GNN model (you need to provide this)
+└── package.json                # Frontend dependencies
+  </pre>
 
-Changes made via Lovable will be committed automatically to this repo.
 
-**Use your preferred IDE**
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-Follow these steps:
+## Prerequisites
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+1. Node.js (v14 or higher)
+2. Python 3.7+ with the following packages:
+   - torch
+   - torchvision
+   - torch_geometric
+   - opencv-python
+   - scikit-image
+   - matplotlib
+   - networkx
+   - numpy
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## Setup Instructions
 
-# Step 3: Install the necessary dependencies.
-npm i
+### 1. Install Frontend Dependencies
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+bash
+npm install
+
+
+### 2. Install Backend Dependencies
+
+bash
+cd src/server
+npm install
+
+
+### 3. Install Python Dependencies
+
+bash
+pip install torch torchvision torch_geometric opencv-python scikit-image matplotlib networkx numpy
+
+
+### 4. Place your trained model
+
+Make sure your trained GNN model (gnn_model.pth) is in the root directory of the project.
+
+## Running the Application
+
+### 1. Start the Backend Server
+
+bash
+cd src/server
+npm start
+
+
+The server will start on port 5000 by default.
+
+### 2. Start the Frontend Development Server
+
+In a new terminal:
+
+bash
 npm run dev
-```
 
-**Edit a file directly in GitHub**
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+The application will be available at http://localhost:3000
 
-**Use GitHub Codespaces**
+## API Endpoints
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- POST /api/analyze: Upload and analyze an image for forgery
 
-## What technologies are used for this project?
+## Environment Variables
 
-This project is built with:
+- PORT: Server port (default: 5000)
+- VITE_API_URL: API URL for the frontend to connect to the backend
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Development
 
-## How can I deploy this project?
+- Backend: Express.js server with multer for file uploads
+- Frontend: React with Tailwind CSS and shadcn/ui components
+- Machine Learning: Python with PyTorch, torch_geometric, and OpenCV
 
-Simply open [Lovable](https://lovable.dev/projects/89a10000-e28c-4ccf-afac-1c64bf759175) and click on Share -> Publish.
+## Troubleshooting
 
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+- Make sure the Python script has executable permission: chmod +x src/server/analyze_image.py
+- Verify that the model file path in analyze_image.py is correct
+- Check server logs for any Python execution errors
