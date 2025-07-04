@@ -1,6 +1,6 @@
 
 
-# Image Forgery Detection Application
+# Image Forgery Detection 
 
 This application uses a Graph Neural Network (GNN) to detect and visualize forgery in images.
 
