@@ -5,19 +5,19 @@
 This application uses a Graph Neural Network (GNN) to detect and visualize forgery in images.
 
 <pre> project-root/
-├── public/                     # Static frontend files (images, icons, etc.)
+├── public/                     Static frontend files (images, icons, etc.)
 
-├── src/                        # Application source code
-│   ├── components/             # Reusable React components (e.g., Navbar, Card)
-│   ├── pages/                  # React pages (e.g., Home.jsx, Upload.jsx)
-│   ├── server/                 # Backend (Node.js + Python)
-│   │   ├── analyze_image.py    # Python script for image analysis
-│   │   ├── server.js           # Express server entry point
-│   │   └── package.json        # Backend dependencies
-│   └── uploads/                # Temp folder for uploaded images
+├── src/                        Application source code
+│   ├── components/             Reusable React components (e.g., Navbar, Card)
+│   ├── pages/                  React pages (e.g., Home.jsx, Upload.jsx)
+│   ├── server/                 Backend (Node.js + Python)
+│   │   ├── analyze_image.py    Python script for image analysis
+│   │   ├── server.js           Express server entry point
+│   │   └── package.json        Backend dependencies
+│   └── uploads/                Temp folder for uploaded images
 
-├── gnn_model.pth               # Trained GNN model (you need to provide this)
-└── package.json                # Frontend dependencies
+├── gnn_model.pth               Trained GNN model (you need to provide this)
+└── package.json                Frontend dependencies
   </pre>
 
 
